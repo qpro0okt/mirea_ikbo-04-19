@@ -30,12 +30,12 @@ info2 = response2.json()
 """Обработка страницы"""
 
 
-def StartKey():
+def StartKey(): #функция, осуществляющая начало диалога
     keyboard = VkKeyboard(one_time=True)
     keyboard.add_button('Начать', color=VkKeyboardColor.POSITIVE)
     return keyboard
 
-def MainKey():
+def MainKey(): #функция, выводящая меню
     keyboard = VkKeyboard(one_time=True)
     keyboard.add_button('Погода', color = VkKeyboardColor.POSITIVE)
     keyboard.add_button('Курс биткоина', color = VkKeyboardColor.POSITIVE)
@@ -44,7 +44,7 @@ def MainKey():
     vk.messages.send(user_id=event.user_id, random_id=get_random_id(), keyboard=keyboard.get_keyboard(), message = 'Выберите функцию')
 
 
-def PogoKey():
+def PogoKey(): #эта функция выдаёт информацию о погоде
     keyboard = VkKeyboard(one_time=True)
     keyboard.add_button('Сейчас', color=VkKeyboardColor.POSITIVE)
     keyboard.add_button('На сегодня', color=VkKeyboardColor.POSITIVE)
@@ -56,7 +56,7 @@ def PogoKey():
     vk.messages.send(user_id=event.user_id, random_id=get_random_id(), keyboard=keyboard.get_keyboard(),
                      message='Показать погоду...')
 
-def CoronaKey():
+def CoronaKey(): #эта функция выдаёт статистику по covid-19
     keyboard = VkKeyboard(one_time=True)
     keyboard.add_button('Россия', color=VkKeyboardColor.POSITIVE)
     keyboard.add_button('Украина', color=VkKeyboardColor.POSITIVE)
@@ -68,7 +68,7 @@ def CoronaKey():
     vk.messages.send(user_id=event.user_id, random_id=get_random_id(), keyboard=keyboard.get_keyboard(),
                      message='Показать статистику...')
 
-def BitcoinKey():
+def BitcoinKey(): #эта функция выдаёт текущий курс биткоина
     keyboard = VkKeyboard(one_time=True)
     keyboard.add_button('Рублю', color=VkKeyboardColor.POSITIVE)
     keyboard.add_button('Доллару', color=VkKeyboardColor.POSITIVE)
@@ -83,7 +83,7 @@ def BitcoinKey():
 
 
 
-def ShowWeatherDay(start,end):
+def ShowWeatherDay(start,end): #вспомогательная функция вывода погоды
     ans = []
     ans = 'УТРО\n'
     ans += 'Описание: ' + info2['list'][start+2]['weather'][0]['description']
@@ -114,7 +114,7 @@ def ShowWeatherDay(start,end):
     ans += '\n' + "Скорость ветра: " + str(info2['list'][start+2]["wind"]["speed"]) + " м\с" + '\n'
     sendmsg(ans,event1.user_id)
 
-def Weather5Day():
+def Weather5Day():#вспомогательная функция вывода погоды
     sendmsg("Погода в Москве с " + info2["list"][0]["dt_txt"][5:10:1] + " по " + info2["list"][39]["dt_txt"][5:10:1],event1.user_id)
     pic = []
     day = []
@@ -132,7 +132,7 @@ def Weather5Day():
         pic += str(round(j)) + ' °C ' + ' // '
     sendmsg(pic,event1.user_id)
 
-def Covid_by_country(location):
+def Covid_by_country(location):#вспомогательная функция вывода статистики по covid-19
     date = location[0]['last_updated'].split("T")
     time = date[1].split(".")
     return f"Данные по стране:\nНаселение: {location[0]['country_population']:,}\n" \
@@ -145,7 +145,7 @@ def Covid_by_country(location):
 
 
 
-
+#реализация взаимодействия с API VK
 longpool = VkLongPoll(vk_session)
 vk = vk_session.get_api()
 swap = False
