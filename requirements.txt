@@ -1,0 +1,3 @@
+vk_api
+bitcoin_value
+COVID19PY
