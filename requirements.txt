@@ -1,3 +1,4 @@
-vk_api
-bitcoin_value
-COVID19PY
+vk_api==11.9.1
+requests==2.22.0
+bitcoin_value==1.4.3
+COVID19Py==0.3.0
