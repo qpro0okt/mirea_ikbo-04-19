@@ -6,7 +6,7 @@ from vk_api.utils import get_random_id
 import json
 import bitcoin_value as bitcoin
 import COVID19Py
-vk_session = vk_api.VkApi(token = 'eae5639d93f80a7e930a970547188dba4cdaabcf9a13b11b1f492e9d0a09af53436ffcc149314e00a8d98')
+vk_session = vk_api.VkApi(token = '')
 
 
 Users = {}
