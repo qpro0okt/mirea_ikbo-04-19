@@ -30,12 +30,20 @@ info2 = response2.json()
 """Обработка страницы"""
 
 
-def StartKey(): #функция, осуществляющая начало диалога
+def StartKey():
+	""" Функция осуществляет начало диалога
+	    Возвращает кнопку "Начать"
+	    Взаимодействует с элементами из библиотеки vk_api
+	"""
     keyboard = VkKeyboard(one_time=True)
     keyboard.add_button('Начать', color=VkKeyboardColor.POSITIVE)
     return keyboard
 
 def MainKey(): #функция, выводящая меню
+	""" Функция осуществляет вывод меню выбора в диалог
+	    Возвращает кнопки "Погода"
+	    Взаимодействует с элементами из библиотеки vk_api
+	"""
     keyboard = VkKeyboard(one_time=True)
     keyboard.add_button('Погода', color = VkKeyboardColor.POSITIVE)
     keyboard.add_button('Курс биткоина', color = VkKeyboardColor.POSITIVE)
